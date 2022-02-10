@@ -1,3 +1,9 @@
-const print = (message) => () => console.log(message);
+const globalMethods = {
+  print: (message) => () => console.log(message),
+  catchAsync: (fn) => (req, res, next) => fn(req, res, next).catch(next),
+  __dirname: process.cwd(),
+};
 
-global.print = print;
+Object.keys(globalMethods).forEach((fn) => {
+  global[fn] = globalMethods[fn];
+});
