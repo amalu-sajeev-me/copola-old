@@ -1,0 +1,37 @@
+{
+  "name": "copola",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.*"
+  },
+  "description": "capstone project for soal. A platform to connect potential labours to people who need them.",
+  "main": "bin/www.js",
+  "type": "module",
+  "scripts": {
+    "server": "nodemon bin/www",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amalu-sajeev-me/copola.git"
+  },
+  "keywords": [
+    "capstone"
+  ],
+  "author": "Amalu_sajeev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amalu-sajeev-me/copola/issues"
+  },
+  "homepage": "https://github.com/amalu-sajeev-me/copola#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/nodemon": "^1.19.1",
+    "nodemon": "^2.0.15"
+  }
+}
