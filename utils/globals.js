@@ -1,7 +1,9 @@
-import { ExpressError } from "./ExpressError";
+import { APIError } from "./APIError.js";
+import { APIResponse } from "./APIResponse.js";
 const globalMethods = {
   print: (message) => () => console.log(message),
-  scream: ExpressError.scream,
+  scream: APIError.scream,
+  say: APIResponse.say,
   catchAsync: (fn) => (req, res, next) => fn(req, res, next).catch(next),
   __dirname: process.cwd(),
 };

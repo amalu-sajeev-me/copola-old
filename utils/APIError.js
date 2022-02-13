@@ -1,4 +1,4 @@
-class ExpressError extends Error {
+class APIError extends Error {
   constructor(statusCode, message, err) {
     super();
     this.statusCode = statusCode;
@@ -6,9 +6,9 @@ class ExpressError extends Error {
     if (err) this.error = err;
   }
   static scream(statusCode, message, err = null) {
-    const error = new ExpressError(statusCode, message, err);
+    const error = new APIError(statusCode, message, err);
     throw error;
   }
 }
 
-export { ExpressError };
+export { APIError };
