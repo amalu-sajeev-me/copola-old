@@ -14,3 +14,5 @@ const validateSignup = async (req, res, next) => {
   await memberSchema.validateAsync(memberDetails);
   next();
 };
+
+export { validateSignup };

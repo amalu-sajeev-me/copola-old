@@ -1,15 +1,16 @@
 import { Router } from "express";
 import { registerAccount, login } from "../controllers/member.controller.js";
+import { validateSignup } from "../models/schemas/member.schema.js";
 import passport from "passport";
 
 const memberRouter = Router();
 
-memberRouter.post("/new", registerAccount);
+memberRouter.post("/new", validateSignup, catchAsync(registerAccount));
 
 memberRouter.post(
   "/login",
   passport.authenticate("login", { session: false }),
-  login
+  catchAsync(login)
 );
 
 memberRouter.get(
