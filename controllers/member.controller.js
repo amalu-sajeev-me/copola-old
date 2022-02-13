@@ -2,10 +2,12 @@ import { Member } from "../models/schemas/member.mongo.js";
 import jwt from "jsonwebtoken";
 
 const registerAccount = async (req, res) => {
-  const user = new Member(req.body);
-  await user.save();
-  console.log(user);
-  res.send("signup success");
+  const successMsg = [true, `account registered succesfully`];
+
+  const { body: memberDetails } = req;
+  const member = new Member(memberDetails);
+  await member.registerAccount();
+  res.json(say(...successMsg));
 };
 
 const login = async (req, res) => {

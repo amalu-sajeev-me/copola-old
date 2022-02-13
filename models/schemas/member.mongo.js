@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { MemberModel } from "../member.model.js";
 
 const { Schema, model } = mongoose;
 
@@ -10,6 +11,9 @@ const memberSchema = new Schema({
   username: String,
   password: String,
 });
+
+memberSchema.loadClass(MemberModel);
+
 
 const Member = model("Member", memberSchema);
 
