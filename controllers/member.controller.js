@@ -11,7 +11,6 @@ const registerAccount = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  scream(404, "random error");
   const { username, _id } = req.user;
   const { API_TOKEN_SECRET } = process.env;
   const token = jwt.sign({ username, _id }, API_TOKEN_SECRET);

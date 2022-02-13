@@ -6,20 +6,29 @@ import { Member } from "../models/schemas/member.mongo.js";
 const { API_TOKEN_SECRET } = process.env;
 
 const localStrategyOptions = {};
-const localStrategy = new LocalStrategy(async (username, password, done) => {
-  const user = await Member.findOne({ username });
-  if (!user) return done(null, false, { message: "user not found" });
-  if (password === user.password)
-    return done(null, user, { message: "logged in" });
-});
+const localStrategy = new LocalStrategy(localStrategyVerify);
+
+async function localStrategyVerify(username, password, done) {
+  const credentials = { username, password };
+  const [isValid, user] = await Member.validateCredentials(credentials);
+  const failureMsg = [null, false, { message: "inalid credentials" }];
+  const successMsg = [null, user, { message: "succesfully logged in" }];
+
+  return !isValid ? done(...failureMsg) : done(...successMsg);
+}
 
 const jwtStrategyOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: API_TOKEN_SECRET,
 };
-const jwtStrategy = new JwtStrategy(jwtStrategyOptions, jwtVerify);
-function jwtVerify(jwtPayload, done) {
-  Member.findById(jwtPayload).then((data) => done(null, data));
+const jwtStrategy = new JwtStrategy(jwtStrategyOptions, jwtStrategyVerify);
+
+async function jwtStrategyVerify(jwtPayload, done) {
+  const { _id: id } = jwtPayload;
+  const user = await Member.findById(id);
+  const successMsg = [null, user];
+  const failureMsg = [null, false, { message: "please login first" }];
+  return !user ? done(...failureMsg) : done(...successMsg);
 }
 
 passport.use("login", localStrategy);

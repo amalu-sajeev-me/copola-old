@@ -17,7 +17,10 @@ class MemberModel {
     const nonExistingUser = [404, `such a user doesn't exist`];
     const user = await Member.findOne({ username });
     !user && scream(...nonExistingUser);
-    return await bcrypt.compare(password, user.password);
+      const isValid = await bcrypt.compare(password, user.password);
+      console.log(isValid);
+
+      return isValid ? [true, user] : [false, user];
   }
 }
 
