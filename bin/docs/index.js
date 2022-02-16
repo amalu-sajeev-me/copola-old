@@ -1,3 +1,4 @@
+import { createAccount } from "./member.doc.js";
 const swaggerDocument = {
   swagger: "2.0",
   info: {
@@ -11,7 +12,13 @@ const swaggerDocument = {
       email: "amalu.sajeev.me@gmail.com",
     },
   },
-  paths: {},
+  paths: {
+    "/member/new": {
+      post: createAccount,
+    },
+  },
 };
 
 export { swaggerDocument };
+
+console.log(createAccount);

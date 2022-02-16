@@ -1,8 +1,12 @@
 class DocsAPIMethod {
   constructor(summary, description = ``) {
-    this.summary = summary;
-    this.description = description;
-    this.parameters = [];
+      
+      this.summary = summary;
+      this.description = description;
+      this.parameters = [];
+      this.responses = {
+        200: { description: "APIResponse[object]" },
+      };
   }
   set addParam(parameter) {
     this.parameters.push(parameter);
