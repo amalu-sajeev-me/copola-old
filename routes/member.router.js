@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { registerAccount, login } from "../controllers/member.controller.js";
-import { validateSignup } from "../models/schemas/member.schema.js";
+import {
+  validateSignup,
+  validateLogin,
+} from "../models/schemas/member.schema.js";
 import passport from "passport";
 
 const memberRouter = Router();
@@ -13,6 +16,7 @@ memberRouter.post(
 
 memberRouter.post(
   "/login",
+  catchAsync(validateLogin),
   passport.authenticate("login", { session: false }),
   catchAsync(login)
 );
