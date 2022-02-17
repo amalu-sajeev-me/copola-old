@@ -14,8 +14,8 @@ const login = async (req, res) => {
   const { username, _id } = req.user;
   const { API_TOKEN_SECRET } = process.env;
   const token = jwt.sign({ username, _id }, API_TOKEN_SECRET);
-  console.log("your token:", token);
-  res.send("this could be a secret");
+  const successMsg = [true, `logged in`, { token }];
+  res.json(say(...successMsg));
 };
 
 export { registerAccount, login };
