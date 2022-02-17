@@ -1,9 +1,9 @@
-# copola
+## copola
 
-### A project to connect potential labours
+#### A project to connect potential labours
 
-### SOAL Capstone project.
+### - SOAL Capstone project.
 
-API https://copola.herokuapp.com/
+- **API** published at https://copola.herokuapp.com/
 
-## API Documentation can be found at https://copola.herokuapp.com/api-docs
+- **API Documentation** can be found at https://copola.herokuapp.com/api-docs
