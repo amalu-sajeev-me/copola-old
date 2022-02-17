@@ -9,6 +9,10 @@ class MemberModel {
   }
 
   async registerAccount() {
+    const { username } = this;
+    const failureMsg = [403, `user already exist`];
+    const existingUser = await Member.findOne({ username });
+    existingUser && scream(...failureMsg);
     await this.encryptPassword();
     return await this.save();
   }
