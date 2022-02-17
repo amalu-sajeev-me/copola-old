@@ -33,9 +33,11 @@
     "express-session": "^1.17.2",
     "joi": "^17.6.0",
     "mongoose": "^6.2.1",
+    "netlify-lambda": "^2.0.15",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "serverless-http": "^2.7.0",
     "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {

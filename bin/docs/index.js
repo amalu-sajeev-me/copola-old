@@ -20,5 +20,3 @@ const swaggerDocument = {
 };
 
 export { swaggerDocument };
-
-console.log(createAccount);

@@ -6,7 +6,6 @@ const options = {
   customCss: styles,
 };
 
-console.log(styles);
 const swaggerServe = swaggerUI.serve;
 const swaggerSetup = swaggerUI.setup(swaggerDocument, options);
 

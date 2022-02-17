@@ -5,7 +5,11 @@ import passport from "passport";
 
 const memberRouter = Router();
 
-memberRouter.post("/new", validateSignup, catchAsync(registerAccount));
+memberRouter.post(
+  "/new",
+  catchAsync(validateSignup),
+  catchAsync(registerAccount)
+);
 
 memberRouter.post(
   "/login",
