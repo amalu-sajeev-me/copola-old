@@ -9,5 +9,6 @@ app.use("/api-docs", swaggerServe, swaggerSetup);
 app.use(middlewares);
 app.use("/member", memberRouter);
 
+app.all("*", (req, res) => scream(404, "NOT FOUND"));
 app.use(errorHandler);
 export { app };
