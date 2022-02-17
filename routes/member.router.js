@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { registerAccount, login } from "../controllers/member.controller.js";
+import { addReview } from "../controllers/review.controller.js";
+import { reviewRouter } from "./review.router.js";
 import {
   validateSignup,
   validateLogin,
@@ -7,6 +9,8 @@ import {
 import passport from "passport";
 
 const memberRouter = Router();
+
+memberRouter.use(`/`, reviewRouter);
 
 memberRouter.post(
   "/new",
@@ -20,6 +24,19 @@ memberRouter.post(
   passport.authenticate("login", { session: false }),
   catchAsync(login)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 memberRouter.get(
   "/secret",

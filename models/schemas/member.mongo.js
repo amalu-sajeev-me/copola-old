@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 import { MemberModel } from "../member.model.js";
 
-const { Schema, model } = mongoose;
+const {
+  Schema,
+  model,
+  Types: { ObjectId },
+} = mongoose;
 
 const memberSchema = new Schema({
   firstName: String,
@@ -10,6 +14,10 @@ const memberSchema = new Schema({
   phone: String,
   username: String,
   password: String,
+  reviews: {
+    type: [ObjectId],
+    ref: `Review`,
+  },
 });
 
 memberSchema.loadClass(MemberModel);

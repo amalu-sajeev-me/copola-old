@@ -21,6 +21,6 @@ const reviewSchema = new Schema({
   },
 });
 
-const Review = model(reviewSchema);
+const Review = model(`Review`, reviewSchema);
 
 export { Review };
